@@ -1,0 +1,130 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: khaki;
+    text-align: center;
+}
+
+#root {
+    padding: 2rem;
+}
+h1{
+    font-size: 60px;
+    padding-bottom: 3rem;
+    text-shadow: 1px 1px 0px white;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 6%;
+}
+
+form input,
+button {
+    font-size: 30px;
+    border-width: 0;
+}
+
+form input {
+    font-weight: lighter;
+    padding-left: 7px;
+    border: 3px solid transparent;
+    width: 450px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+form input:focus {
+    outline: none;
+    border: 3px solid black;
+}
+
+form button{
+    border: 3px solid transparent;
+    width: 100px;
+    background-color: royalblue;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: all 0.1s;
+}
+form button:active{
+    border: 3px solid black;
+}
+form button:hover{
+    cursor: pointer;
+    background-color: rgb(0, 56, 225);
+}
+ul{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    border-top-left-radius:30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius: 30px;
+    padding: 20px 50px;
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 30px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: black;
+}
+li:nth-child(odd){
+    background-color: rgb(208, 220, 255);
+}
+li:nth-child(even){
+    background-color: white;
+}
+li pre{
+    text-align: left;
+    font-family: sans-serif;
+    width: 700px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+.option button{
+    background-color: transparent;
+    font-size: 30px;
+    text-align: center;
+}
+.svg-inline--fa{
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+.svg-inline--fa:hover{
+    transform: scale(1.18);
+    cursor: pointer;
+}
+.svg-inline--fa:active{
+    color: royalblue;
+    transition: none;
+}
+li input{
+    font-size: 30px;
+    margin-left: 5px;
+    font-weight: lighter;
+    padding-left: 7px;
+    border: 3px solid transparent;
+    width: 250px;
+}
+li input:focus {
+    outline: none;
+    border: 3px solid black;
+}
+
+.underline {
+    text-decoration: line-through;
+}
