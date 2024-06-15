@@ -1,24 +1,44 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import "./todo.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPen, faThumbsDown, faThumbsUp, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-
 function App() {
   document.title = "Todo List";
+
   const [input, setInput] = useState("");
   const [arr, updateArr] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editInput, setEditInput] = useState("");
 
+  // Load tasks from local storage when the component mounts
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      console.log("Loading tasks from local storage:", storedTasks); // Debugging log
+      updateArr(JSON.parse(storedTasks));
+    } else {
+      console.log("No tasks found in local storage."); // Debugging log
+    }
+  }, []);
+
+  // Function to update local storage whenever the tasks array changes
+  const updateLocalStorage = (tasks) => {
+    console.log("Updating local storage with tasks:", JSON.stringify(tasks)); // Debugging log
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  };
+
   function FormSubmit(e) {
     e.preventDefault();
     if (editIndex === null) {
-      updateArr([...arr, { text: input, completed: false }]);
+      const newTasks = [...arr, { text: input, completed: false }];
+      updateArr(newTasks);
+      updateLocalStorage(newTasks);
     } else {
       const newArr = [...arr];
       newArr[editIndex] = { text: editInput, completed: false };
       updateArr(newArr);
+      updateLocalStorage(newArr);
       setEditIndex(null); // Reset editIndex after updating
       setEditInput(""); // Clear the editInput
     }
@@ -37,6 +57,7 @@ function App() {
     const newArr = [...arr];
     newArr.splice(index, 1);
     updateArr(newArr);
+    updateLocalStorage(newArr);
   }
 
   function EditList(index) {
@@ -56,6 +77,7 @@ function App() {
     const newArr = [...arr];
     newArr[index].completed = !newArr[index].completed;
     updateArr(newArr);
+    updateLocalStorage(newArr);
     if (editIndex === index) {
       // If the edited task is marked as completed, reset editing state
       setEditIndex(null);
@@ -65,7 +87,7 @@ function App() {
 
   return (
     <>
-    <h1>Todo List</h1>
+      <h1>Todo List</h1>
       <form action="" onSubmit={FormSubmit}>
         <input type="text" placeholder="Enter Task" value={input} onChange={valueChanged} />
         <button type="submit">Add</button>
