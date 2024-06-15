@@ -26,9 +26,18 @@ src/Add name in table
 src/assets
 src/Bg Changer
 src/Counter
+src/Fom Hooks
+src/Pagination
 src/Password Generator
 src/Practise
-src/Product
 src/Product(useEffect)
-src/Router
+src/Product
+src/ReactRedux_IncDec
+src/reduxTodoList
+src/ReduxToolKit
+src/routing
+src/Set_E_Commerce_Website
 src/UseContext
+src/useReducer
+src/Router
+src/E commerce
